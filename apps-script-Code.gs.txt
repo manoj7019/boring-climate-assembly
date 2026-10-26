@@ -1,0 +1,33 @@
+var HEADERS = ["Submitted","Updated","Reference","Team name","School","Number of students",
+  "Student 1 name","Student 1 grade","Student 2 name","Student 2 grade","Student 3 name","Student 3 grade",
+  "Student 4 name","Student 4 grade","Student 5 name","Student 5 grade",
+  "Coordinator name","Coordinator email","Coordinator phone"];
+
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var r = JSON.parse(e.postData.contents);
+    var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Registrations") || SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    if (sh.getLastRow() === 0) { sh.appendRow(HEADERS); sh.setFrozenRows(1); sh.getRange(1,1,1,HEADERS.length).setFontWeight("bold"); }
+    var st = r.students || [];
+    var c = r.coordinator || {};
+    var row = [r.submittedAt || "", r.updatedAt || "", r.ref || "", r.team || "", r.school || "", st.length];
+    for (var i = 0; i < 5; i++) { row.push((st[i] || {}).name || "", (st[i] || {}).grade || ""); }
+    row.push(c.name || "", c.email || "", "'" + (c.phone || ""));
+    var last = sh.getLastRow(), found = 0;
+    if (last > 1) {
+      var refs = sh.getRange(2, 3, last - 1, 1).getValues();
+      for (var j = 0; j < refs.length; j++) { if (refs[j][0] === r.ref) { found = j + 2; break; } }
+    }
+    if (found) { sh.getRange(found, 1, 1, row.length).setValues([row]); }
+    else { sh.appendRow(row); }
+    return ContentService.createTextOutput(JSON.stringify({ok: true})).setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ok: false, error: String(err)})).setMimeType(ContentService.MimeType.JSON);
+  } finally { lock.releaseLock(); }
+}
+
+function doGet() {
+  return ContentService.createTextOutput(JSON.stringify({ok: true, service: "BCA registrations"})).setMimeType(ContentService.MimeType.JSON);
+}
