@@ -316,6 +316,8 @@ img, svg { max-width: 100%; }
 @keyframes bob { to { transform: translateY(3px) rotate(1.5deg); } }
 @keyframes haze { to { stroke-dashoffset: -18; } }
 @keyframes ping { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) { .pano .sink { animation: sink 1.6s ease-in-out infinite; } }
+@keyframes sink { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(4px); opacity: 1; } }
 @keyframes drive { 0% { transform: translateX(-60px); } 100% { transform: translateX(110px); } }
 
 /* --- climate ticker --- */
@@ -636,6 +638,9 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
 .deliv { list-style: none; padding: 0; display: grid; gap: var(--s3); margin-top: var(--s1); }
 .deliv li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: var(--s3); font-size: 14.5px; line-height: 1.55; color: var(--charcoal); }
 .deliv .ic { color: var(--amber-700); margin-top: 2px; }
+.mentor { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: var(--s3); margin-top: var(--s2); padding: var(--s3) var(--s4); background: var(--green-50); border-radius: var(--r-card); font-size: 14.5px; line-height: 1.5; color: var(--ink); }
+.mentor .ic { color: var(--green-500); margin-top: 2px; }
+.mentor b { font-weight: 800; }
 .step-badges { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s1); }
 @media (max-width: 1000px) { .steps4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s7) var(--s6); } .steps4::before { display: none; } }
 @media (max-width: 560px) { .steps4 { grid-template-columns: minmax(0, 1fr); gap: var(--s6); } }
@@ -691,6 +696,17 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
 .p-plain { background: var(--white); border: 1px solid var(--line); box-shadow: var(--sh-raised); } .p-plain .chip-ic { background: var(--lime-50); color: var(--lime-700); }
 @media (max-width: 860px) { .prizes { grid-template-columns: minmax(0, 1fr); } }
 
+.prize-title { font-size: 22px; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; }
+.p-gold .prize-title { color: var(--ink); } .p-green .prize-title { color: var(--white); } .p-plain .prize-title { color: var(--ink); }
+.prize-list { list-style: none; padding: 0; display: grid; gap: var(--s2); margin-top: var(--s2); }
+.prize-list li { display: flex; align-items: center; gap: var(--s2); font-size: 15.5px; font-weight: 700; color: var(--ink); }
+.prize-list .ic { color: var(--amber-700); background: rgba(255,255,255,.55); border-radius: 50%; padding: 3px; width: 22px; height: 22px; }
+.award-chips { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s2); }
+.award-chips span { font-size: 14px; font-weight: 700; color: var(--white); background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); border-radius: var(--r-pill); padding: 6px 12px; }
+.prize-body { font-size: 15.5px; color: var(--charcoal); line-height: 1.55; margin-top: var(--s1); }
+.prize-note { display: flex; align-items: center; gap: var(--s2); margin-top: var(--s5); font-size: 14px; color: var(--muted); }
+.prize-note .ic { color: var(--amber-700); }
+
 /* judging — compact legend */
 .crit-compact { display: grid; align-content: center; }
 .crit-compact .crit { grid-template-columns: 72px minmax(0, 1fr); align-items: center; padding: var(--s5) 0; }
@@ -727,6 +743,18 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
 .runby-text { font-size: clamp(18px, 16.4px + 0.45vw, 22px); line-height: 1.45; color: var(--charcoal); max-width: 56ch; }
 .runby-text b { color: var(--ink); font-weight: 800; }
 @media (max-width: 560px) { .runby .col { flex-direction: column; align-items: flex-start; gap: var(--s4); } }
+
+.runby .col.runby2 { display: grid; gap: var(--s5); align-items: start; }
+.orgs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); }
+.org { display: flex; gap: var(--s5); align-items: flex-start; padding: var(--s6); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--white); box-shadow: var(--sh-raised); }
+.org > div { display: grid; gap: var(--s1); }
+.org-role { font-size: var(--fs-cap); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.org-name { font-size: 22px; font-weight: 800; color: var(--ink); line-height: 1.25; }
+.org-name a { color: var(--green-500); text-decoration: none; display: inline-flex; align-items: center; gap: var(--s2); }
+.org-name a:hover { text-decoration: underline; }
+.org-desc { font-size: 15.5px; color: var(--charcoal); line-height: 1.55; }
+.mark-amber { background: var(--amber-50) !important; color: var(--amber-700) !important; }
+@media (max-width: 760px) { .orgs { grid-template-columns: minmax(0, 1fr); } .org { padding: var(--s5); gap: var(--s4); } .org .runby-mark { width: 56px; height: 56px; } }
 
 /* register side */
 .deadline { display: inline-flex; align-items: center; flex-wrap: wrap; gap: var(--s2); justify-self: start; font-size: 15px; font-weight: 700; color: var(--ink); background: var(--amber-50); border: 1px solid var(--amber-100); border-radius: var(--r-card); padding: var(--s2) var(--s4); margin-top: var(--s2); }
@@ -844,16 +872,16 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
   <div class="pano" id="pano">
     <div class="pano-scroll">
       <div class="pano-inner">
-        <svg viewBox="0 0 1440 280" role="img" aria-label="Illustration of six climate crises across India: a cloudburst over Himalayan peaks and a glacial lake, desert heat with a water tanker, a flooded river village, rain over Bengaluru's skyline and lake, a cyclone over mangrove coast, and rising water in Kerala's backwaters">
+        <svg viewBox="0 0 1440 312" role="img" aria-label="Illustration of six climate crises across India: a cloudburst over Himalayan peaks and a glacial lake, a flooded river village in Bihar, desert heat with a water tanker, Bengaluru's paved city over a dried lake and a borewell reaching a nearly empty aquifer, a cyclone over mangrove coast, and rising water in Kerala's backwaters">
           <defs>
             <pattern id="win" width="12" height="14" patternUnits="userSpaceOnUse"><rect x="3" y="3" width="5" height="6" fill="#fbe9b2"/></pattern>
             <pattern id="paddy" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M7 14 L4 5 M7 14 L7 3 M7 14 L10 5" stroke="#477300" stroke-width="1.6" fill="none" stroke-linecap="round"/></pattern>
-            <clipPath id="seaClip"><rect x="952" y="0" width="488" height="280"/></clipPath>
+            <clipPath id="seaClip"><rect x="952" y="0" width="488" height="312"/></clipPath>
           </defs>
 
           <!-- ground -->
-          <rect x="0" y="232" width="1440" height="48" fill="#c2e0d3"/>
-          <rect x="240" y="232" width="240" height="48" fill="#fbe9b2"/>
+          <rect x="0" y="232" width="1440" height="80" fill="#c2e0d3"/>
+          <rect x="480" y="232" width="240" height="80" fill="#fbe9b2"/>
 
           <!-- UTTARAKHAND: peaks, glacial lake, cloudburst -->
           <polygon points="-10,232 55,128 110,190 170,100 250,232" fill="#d0d4cf"/>
@@ -869,6 +897,24 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
             <g fill="#a9adaa"><circle cx="40" cy="54" r="16"/><circle cx="62" cy="44" r="21"/><circle cx="86" cy="56" r="14"/><rect x="24" y="54" width="76" height="18" rx="9"/></g>
           </g>
 
+          <g transform="translate(-240 0)">
+          <!-- BIHAR: monsoon cloud, paddy, river, flooded hut -->
+          <g class="drift">
+            <g class="rain" stroke="#4fa47f" stroke-width="2" stroke-linecap="round">
+              <line x1="566" y1="74" x2="558" y2="150"/><line x1="580" y1="74" x2="572" y2="150"/><line x1="594" y1="74" x2="586" y2="150"/><line x1="608" y1="74" x2="600" y2="150"/><line x1="622" y1="74" x2="614" y2="150"/><line x1="636" y1="74" x2="628" y2="150"/>
+            </g>
+            <g fill="#a9adaa"><circle cx="572" cy="56" r="16"/><circle cx="596" cy="46" r="22"/><circle cx="624" cy="54" r="17"/><rect x="556" y="56" width="86" height="18" rx="9"/></g>
+          </g>
+          <rect x="480" y="214" width="240" height="18" fill="url(#paddy)"/>
+          <rect x="584" y="196" width="40" height="30" fill="#8a5f07"/>
+          <polygon points="576,199 604,176 632,199" fill="#4a4b4b"/>
+          <rect x="599" y="208" width="10" height="18" fill="#00301f"/>
+          <rect x="508" y="222" width="190" height="12" rx="6" fill="#8fc6ad" opacity=".9"/>
+          <path d="M480 238 C540 226 610 250 720 236 V262 C620 272 560 254 480 264 Z" fill="#8fc6ad"/>
+          <path d="M500 248 q12 -5 24 0 M560 252 q12 -5 24 0 M640 246 q12 -5 24 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
+          </g>
+
+          <g transform="translate(240 0)">
           <!-- RAJASTHAN: sun, heat haze, dunes, tanker -->
           <g class="rays" stroke="#ebb018" stroke-width="4" stroke-linecap="round">
             <line x1="360" y1="34" x2="360" y2="46"/><line x1="360" y1="138" x2="360" y2="150"/><line x1="302" y1="92" x2="314" y2="92"/><line x1="406" y1="92" x2="418" y2="92"/>
@@ -885,45 +931,35 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
             <rect x="36" y="6" width="15" height="14" rx="2" fill="#00704a"/><rect x="40" y="9" width="7" height="5" rx="1" fill="#c2e0d3"/>
             <circle cx="10" cy="22" r="4.5" fill="#4a4b4b"/><circle cx="43" cy="22" r="4.5" fill="#4a4b4b"/>
           </g></g>
-
-          <!-- BIHAR: monsoon cloud, paddy, river, flooded hut -->
-          <g class="drift">
-            <g class="rain" stroke="#4fa47f" stroke-width="2" stroke-linecap="round">
-              <line x1="566" y1="74" x2="558" y2="150"/><line x1="580" y1="74" x2="572" y2="150"/><line x1="594" y1="74" x2="586" y2="150"/><line x1="608" y1="74" x2="600" y2="150"/><line x1="622" y1="74" x2="614" y2="150"/><line x1="636" y1="74" x2="628" y2="150"/>
-            </g>
-            <g fill="#a9adaa"><circle cx="572" cy="56" r="16"/><circle cx="596" cy="46" r="22"/><circle cx="624" cy="54" r="17"/><rect x="556" y="56" width="86" height="18" rx="9"/></g>
           </g>
-          <rect x="480" y="214" width="240" height="18" fill="url(#paddy)"/>
-          <rect x="584" y="196" width="40" height="30" fill="#8a5f07"/>
-          <polygon points="576,199 604,176 632,199" fill="#4a4b4b"/>
-          <rect x="599" y="208" width="10" height="18" fill="#00301f"/>
-          <rect x="508" y="222" width="190" height="12" rx="6" fill="#8fc6ad" opacity=".9"/>
-          <path d="M480 238 C540 226 610 250 720 236 V262 C620 272 560 254 480 264 Z" fill="#8fc6ad"/>
-          <path d="M500 248 q12 -5 24 0 M560 252 q12 -5 24 0 M640 246 q12 -5 24 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
 
-          <!-- KARNATAKA: Bengaluru skyline, rain, lake, flood sensor -->
-          <g class="drift">
-            <g class="rain" stroke="#4fa47f" stroke-width="2" stroke-linecap="round">
-              <line x1="806" y1="60" x2="800" y2="104"/><line x1="820" y1="60" x2="814" y2="104"/><line x1="834" y1="60" x2="828" y2="104"/><line x1="848" y1="60" x2="842" y2="104"/><line x1="862" y1="60" x2="856" y2="104"/><line x1="876" y1="60" x2="870" y2="104"/>
-            </g>
-            <g fill="#a9adaa"><circle cx="812" cy="42" r="15"/><circle cx="836" cy="32" r="20"/><circle cx="862" cy="42" r="16"/><rect x="796" y="42" width="84" height="18" rx="9"/></g>
-          </g>
+          <!-- KARNATAKA: paved city, dried lake, borewell reaching a nearly empty aquifer, flood sensor -->
+          <rect x="720" y="238" width="232" height="74" fill="#e3e5e1"/>
+          <g stroke="#d0d4cf" stroke-width="1.5" stroke-dasharray="6 6" fill="none"><path d="M720 256 H952"/><path d="M720 274 H952"/></g>
+          <g fill="#a9adaa"><circle cx="746" cy="264" r="2"/><circle cx="790" cy="282" r="2.5"/><circle cx="842" cy="262" r="2"/><circle cx="880" cy="268" r="2"/><circle cx="770" cy="300" r="2"/></g>
+          <rect x="736" y="230" width="122" height="8" fill="#a9adaa"/>
+          <g fill="#00432c"><rect x="744" y="170" width="26" height="62"/><rect x="773" y="142" width="32" height="90"/><rect x="808" y="160" width="26" height="72"/><rect x="837" y="186" width="20" height="46"/></g>
+          <g fill="url(#win)" opacity=".55"><rect x="744" y="170" width="26" height="62"/><rect x="773" y="142" width="32" height="90"/><rect x="808" y="160" width="26" height="72"/><rect x="837" y="186" width="20" height="46"/></g>
+          <ellipse cx="886" cy="234" rx="26" ry="5" fill="#f2ca56"/>
+          <path d="M866 233 l8 -2 l6 3 M880 231 l6 3 l8 -2 M892 232 l6 2" stroke="#8a5f07" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="887" cy="235" rx="5" ry="1.6" fill="#8fc6ad"/>
           <g>
-            <rect x="752" y="150" width="30" height="82" fill="#005538"/><rect x="785" y="122" width="36" height="110" fill="#00432c"/>
-            <rect x="824" y="166" width="26" height="66" fill="#00704a"/><rect x="853" y="112" width="40" height="120" fill="#005538"/>
-            <rect x="896" y="142" width="30" height="90" fill="#00432c"/><rect x="929" y="172" width="20" height="60" fill="#00704a"/>
-            <g fill="url(#win)" opacity=".6">
-              <rect x="752" y="150" width="30" height="82"/><rect x="785" y="122" width="36" height="110"/><rect x="824" y="166" width="26" height="66"/><rect x="853" y="112" width="40" height="120"/><rect x="896" y="142" width="30" height="90"/><rect x="929" y="172" width="20" height="60"/>
-            </g>
+            <rect x="922" y="212" width="8" height="20" rx="1" fill="#4a4b4b"/>
+            <path d="M926 214 l-14 -10" stroke="#4a4b4b" stroke-width="3" stroke-linecap="round"/>
+            <path d="M930 218 h7 v5" stroke="#4a4b4b" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <line x1="926" y1="232" x2="926" y2="276" stroke="#747474" stroke-width="3"/>
           </g>
-          <ellipse cx="840" cy="240" rx="84" ry="7" fill="#8fc6ad"/>
-          <line x1="734" y1="232" x2="734" y2="194" stroke="#4a4b4b" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="734" cy="192" r="4.5" fill="#ebb018"/>
-          <path class="ping" d="M724 182 a14 14 0 0 1 20 0 M718 175 a22 22 0 0 1 32 0" stroke="#ebb018" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M886 250 H950" stroke="#4fa47f" stroke-width="2" stroke-dasharray="5 4"/>
+          <path d="M898 284 Q898 278 906 278 H944 Q950 278 950 284 V292 Q950 298 944 298 H904 Q898 298 898 292 Z" fill="#fff" fill-opacity=".5" stroke="#4fa47f" stroke-width="1.6" stroke-dasharray="4 3"/>
+          <path d="M899 292 H949 Q949 298 944 298 H904 Q899 298 899 292 Z" fill="#4fa47f"/>
+          <g class="sink" stroke="#4fa47f" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M906 256 l4 4 l4 -4"/><path d="M906 264 l4 4 l4 -4"/></g>
+          <line x1="732" y1="232" x2="732" y2="196" stroke="#4a4b4b" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="732" cy="194" r="4.5" fill="#ebb018"/>
+          <path class="ping" d="M722 184 a14 14 0 0 1 20 0 M716 177 a22 22 0 0 1 32 0" stroke="#ebb018" stroke-width="2.5" fill="none" stroke-linecap="round"/>
 
           <!-- ODISHA + KERALA: sea -->
           <g clip-path="url(#seaClip)">
-            <path class="wave" d="M830 212 q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V280 H830 Z" fill="#8fc6ad"/>
+            <path class="wave" d="M830 212 q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V312 H830 Z" fill="#8fc6ad"/>
           </g>
           <!-- Odisha: cyclone, wind, mangroves -->
           <g stroke="#d0d4cf" stroke-width="3" fill="none" stroke-linecap="round"><path d="M990 70 q24 -8 48 0"/><path d="M1000 140 q26 -8 52 0"/><path d="M1140 60 q22 -7 44 0"/></g>
@@ -942,12 +978,12 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
           <g class="bob"><path d="M1352 224 h66 l-9 11 h-48 z" fill="#8a5f07"/><path d="M1360 224 q25 -22 50 0 z" fill="#f2ca56"/></g>
           <g stroke="#4a4b4b" stroke-width="2" stroke-linecap="round"><line x1="1428" y1="236" x2="1428" y2="186"/><line x1="1422" y1="196" x2="1428" y2="196"/><line x1="1422" y1="206" x2="1428" y2="206"/><line x1="1422" y1="216" x2="1428" y2="216"/></g>
           <g clip-path="url(#seaClip)">
-            <path class="wave2" d="M830 236 q30 -8 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V280 H830 Z" fill="#4fa47f" opacity=".85"/>
+            <path class="wave2" d="M830 236 q30 -8 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V312 H830 Z" fill="#4fa47f" opacity=".85"/>
           </g>
         </svg>
         <button class="pano-label" type="button" data-state="uttarakhand" style="left:8.33%"><svg class="ic ic-xs"><use href="#i-mountain"/></svg>Uttarakhand</button>
-        <button class="pano-label" type="button" data-state="rajasthan" style="left:25%"><svg class="ic ic-xs"><use href="#i-sun"/></svg>Rajasthan</button>
-        <button class="pano-label" type="button" data-state="bihar" style="left:41.67%"><svg class="ic ic-xs"><use href="#i-waves"/></svg>Bihar</button>
+        <button class="pano-label" type="button" data-state="rajasthan" style="left:41.67%"><svg class="ic ic-xs"><use href="#i-sun"/></svg>Rajasthan</button>
+        <button class="pano-label" type="button" data-state="bihar" style="left:25%"><svg class="ic ic-xs"><use href="#i-waves"/></svg>Bihar</button>
         <button class="pano-label" type="button" data-state="karnataka" style="left:58.33%"><svg class="ic ic-xs"><use href="#i-droplet"/></svg>Karnataka</button>
         <button class="pano-label" type="button" data-state="odisha" style="left:75%"><svg class="ic ic-xs"><use href="#i-cyclone"/></svg>Odisha</button>
         <button class="pano-label" type="button" data-state="kerala" style="left:91.67%"><svg class="ic ic-xs"><use href="#i-shore"/></svg>Kerala</button>
@@ -1016,6 +1052,7 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
           <li><svg class="ic ic-s"><use href="#i-dash"/></svg><span>A simple prototype of a digital tool, like a dashboard or alert app (made with Canva, Figma, Google Sites or similar, no coding needed)</span></li>
           <li><svg class="ic ic-s"><use href="#i-sheet"/></svg><span>A budget sheet showing how you'd spend the ₹10 crore</span></li>
         </ul>
+        <p class="mentor"><svg class="ic ic-s"><use href="#i-teacher"/></svg><span>You'll get <b>two mentorship sessions</b>, one hour each, while you build it.</span></p>
       </li>
       <li class="step4 rv">
         <span class="num">4</span>
@@ -1070,10 +1107,30 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
       <p class="lead">All six finalist teams present their plan to a jury of climate policy experts, urban planners and civic tech leads.</p>
     </div>
     <div class="prizes">
-      <div class="prize p-gold rv"><span class="chip-ic"><svg class="ic ic-m"><use href="#i-trophy"/></svg></span><p class="eyebrow">Winning team</p><p class="prize-val tba">Prize to be announced</p></div>
-      <div class="prize p-green rv"><span class="chip-ic"><svg class="ic ic-m"><use href="#i-flag"/></svg></span><p class="eyebrow">Runners-up</p><p class="prize-val tba">Prize to be announced</p></div>
-      <div class="prize p-plain rv"><span class="chip-ic"><svg class="ic ic-m"><use href="#i-doc"/></svg></span><p class="eyebrow">Every finalist team</p><p class="prize-val tba">Certificate or award to be announced</p></div>
+      <div class="prize p-gold rv">
+        <span class="chip-ic"><svg class="ic ic-m"><use href="#i-trophy"/></svg></span>
+        <p class="eyebrow">Winner and runners-up</p>
+        <h3 class="prize-title">Trophies and medals</h3>
+        <ul class="prize-list">
+          <li><svg class="ic ic-s"><use href="#i-plus"/></svg>A site visit</li>
+          <li><svg class="ic ic-s"><use href="#i-plus"/></svg>Internships at GPS Renewables</li>
+          <li><svg class="ic ic-s"><use href="#i-plus"/></svg>A podcast feature</li>
+        </ul>
+      </div>
+      <div class="prize p-green rv">
+        <span class="chip-ic"><svg class="ic ic-m"><use href="#i-flag"/></svg></span>
+        <p class="eyebrow">Special awards</p>
+        <h3 class="prize-title">Three individual honours</h3>
+        <div class="award-chips"><span>Best Delegate</span><span>Best Policy Brief</span><span>Best Budget</span></div>
+      </div>
+      <div class="prize p-plain rv">
+        <span class="chip-ic"><svg class="ic ic-m"><use href="#i-doc"/></svg></span>
+        <p class="eyebrow">All teams</p>
+        <h3 class="prize-title">Certificates</h3>
+        <p class="prize-body">A certificate for each student, plus one for the school.</p>
+      </div>
     </div>
+    <p class="prize-note rv"><svg class="ic ic-s"><use href="#i-alert"/></svg>Prizes are tentative. More to be announced soon.</p>
   </div>
 </section>
 
@@ -1125,11 +1182,17 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
 
 <!-- ============ WHO'S RUNNING IT ============ -->
 <section class="runby bg-white" id="organiser-info">
-  <div class="col">
-    <span class="runby-mark"><svg class="ic ic-l"><use href="#i-sun"/></svg></span>
-    <div>
-      <p class="eyebrow">Who's running it</p>
-      <p class="runby-text">The Boring Climate Assembly is run by <b>GPS Renewables</b>, India's premier full-stack renewable oil &amp; gas innovator.</p>
+  <div class="col runby2">
+    <p class="eyebrow">Who's running it</p>
+    <div class="orgs">
+      <div class="org">
+        <span class="runby-mark"><svg class="ic ic-l"><use href="#i-sun"/></svg></span>
+        <div><p class="org-role">Run by</p><p class="org-name">GPS Renewables</p><p class="org-desc">India's premier full-stack renewable oil &amp; gas innovator.</p></div>
+      </div>
+      <div class="org">
+        <span class="runby-mark mark-amber"><svg class="ic ic-l"><use href="#i-mic"/></svg></span>
+        <div><p class="org-role">Powered by</p><p class="org-name"><a href="https://www.picklejarmedia.in/" target="_blank" rel="noopener">Pickle Jar Media <svg class="ic ic-xs"><use href="#i-arrow"/></svg></a></p><p class="org-desc">A leading podcast production house &amp; event curation company.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1147,7 +1210,7 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
         <p class="eyebrow">Questions?</p>
         <p>Write to</p>
         <div class="contact-row">
-          <a class="email" href="mailto:barsha@picklejar.com" id="emailAddr">barsha@picklejar.com</a>
+          <a class="email" href="mailto:hello@picklejarmedia.in" id="emailAddr">hello@picklejarmedia.in</a>
           <button type="button" class="btn btn-secondary btn-s" id="copyEmail"><svg class="ic ic-xs"><use href="#i-doc"/></svg><span>Copy</span></button>
         </div>
       </div>
@@ -1166,7 +1229,7 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
 
           <fieldset>
             <legend><span class="h4"><svg class="ic ic-s"><use href="#i-school"/></svg>School and coordinator</span></legend>
-            <div class="field"><label for="school">School name</label><input type="text" id="school" autocomplete="organization" placeholder="e.g. Greenwood High School"><p class="err"></p></div>
+            <div class="field"><label for="school">School name</label><input type="text" id="school" autocomplete="organization" placeholder="Your school's full name"><p class="err"></p></div>
             <div class="field"><label for="tName">Teacher / coordinator name</label><input type="text" id="tName" autocomplete="name" placeholder="e.g. Ms. Kavya Rao"><p class="err"></p></div>
             <div class="two">
               <div class="field"><label for="tEmail">Coordinator email</label><input type="email" id="tEmail" autocomplete="email" placeholder="name@school.edu.in"><p class="err"></p></div>
@@ -1202,17 +1265,6 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
         </div>
       </div>
 
-      <div class="form-card organiser" id="organiser" hidden>
-        <div class="org-top">
-          <div><p class="eyebrow">Organiser view · only you see this</p><h3 class="h4">Registrations</h3></div>
-          <span class="badge badge-solid" id="orgCount">0 teams</span>
-        </div>
-        <div class="org-actions">
-          <button type="button" class="btn btn-primary btn-s" id="xlsxBtn" disabled><svg class="ic ic-xs"><use href="#i-sheet"/></svg><span>Download Excel sheet</span></button>
-          <span class="small muted" id="xlsxMsg">One row per team, with every field from the form.</span>
-        </div>
-        <div class="org-body" id="orgList"><p class="org-empty">No teams yet. New registrations appear here as they arrive.</p></div>
-      </div>
     </div>
   </div>
 </section>
@@ -1227,9 +1279,9 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
       <p>A real-life climate problem-solving competition for high school students in Bengaluru and Karnataka.</p>
     </div>
     <div><h4>Explore</h4><ul><li><a href="#event" data-nav>The event</a></li><li><a href="#how" data-nav>How it works</a></li><li><a href="#states" data-nav>The six states</a></li><li><a href="#why" data-nav>Why register</a></li></ul></div>
-    <div><h4>Take part</h4><ul><li><a href="#prizes" data-nav>Prizes</a></li><li><a href="#judging" data-nav>Judging</a></li><li><a href="#schedule" data-nav>Event run</a></li><li><a href="#register" data-nav>Register your team</a></li><li><span style="color:rgba(255,255,255,.8)">barsha@picklejar.com</span></li></ul></div>
+    <div><h4>Take part</h4><ul><li><a href="#prizes" data-nav>Prizes</a></li><li><a href="#judging" data-nav>Judging</a></li><li><a href="#schedule" data-nav>Event run</a></li><li><a href="#register" data-nav>Register your team</a></li><li><span style="color:rgba(255,255,255,.8)">hello@picklejarmedia.in</span></li></ul></div>
   </div>
-  <div class="foot-base"><div class="col"><span>The Boring Climate Assembly · Run by GPS Renewables</span><span>Bengaluru / Karnataka</span></div></div>
+  <div class="foot-base"><div class="col"><span>The Boring Climate Assembly · Run by GPS Renewables · Powered by Pickle Jar Media</span><span>Bengaluru / Karnataka</span></div></div>
 </footer>
 
 <script>
