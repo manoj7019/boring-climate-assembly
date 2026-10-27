@@ -841,7 +841,7 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
         <span class="badge badge-green"><svg class="ic ic-xs"><use href="#i-sun"/></svg>Climate problem-solving competition</span>
       </div>
       <h1 class="display">The <span class="t-bar">Boring</span> Climate Assembly</h1>
-      <p class="lead">A real-life climate problem-solving competition for high school students in Bengaluru and Karnataka (Grades 8–12).</p>
+      <p class="lead">A real-life climate problem-solving competition for high school students in Bengaluru and Karnataka (Grades 8–10).</p>
       <p class="hero-hook">Six states. A <b>₹10 crore simulated budget</b>. One day to show how you'd keep people safe.</p>
       <div class="hero-meta"><span><svg class="ic ic-s"><use href="#i-cal"/></svg><span class="tba">Date to be announced</span></span><span><svg class="ic ic-s"><use href="#i-pin"/></svg><span class="tba">Venue to be announced</span></span></div>
       <div class="hero-actions">
@@ -1033,7 +1033,7 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
         <span class="num">1</span>
         <span class="chip-ic tone-green"><svg class="ic ic-m"><use href="#i-users"/></svg></span>
         <h3 class="h4">Form a team</h3>
-        <p>3 to 5 students from Grades 8–12.</p>
+        <p>3 to 5 students from Grades 8–10.</p>
       </li>
       <li class="step4 rv">
         <span class="num">2</span>
@@ -1436,7 +1436,7 @@ input:focus, select:focus { outline: none; border-color: var(--green-500); box-s
       row.innerHTML = `
         <span class="num">${i + 1}</span>
         <div class="field"><label class="vh" for="sn${i}">Student ${i + 1} name</label><input type="text" id="sn${i}" data-k="name" placeholder="Student ${i + 1} full name" autocomplete="off"><p class="err"></p></div>
-        <div class="field grade-f"><label class="vh" for="sg${i}">Student ${i + 1} grade</label><select id="sg${i}" data-k="grade"><option value="">Grade</option><option value="8">Grade 8</option><option value="9">Grade 9</option><option value="10">Grade 10</option><option value="11">Grade 11</option><option value="12">Grade 12</option></select><p class="err"></p></div>`;
+        <div class="field grade-f"><label class="vh" for="sg${i}">Student ${i + 1} grade</label><select id="sg${i}" data-k="grade"><option value="">Grade</option><option value="8">Grade 8</option><option value="9">Grade 9</option><option value="10">Grade 10</option></select><p class="err"></p></div>`;
       $("[data-k=name]", row).value = s.name || "";
       $("[data-k=grade]", row).value = s.grade || "";
       stuWrap.appendChild(row);
